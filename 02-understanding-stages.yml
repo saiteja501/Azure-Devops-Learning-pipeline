@@ -13,7 +13,7 @@ stages:
   - job: SecondJob
     steps:
     - bash: echo Build SecondJob  
-    - bash: $(PipelineLevelVariable)
+    - bash: echo $(PipelineLevelVariable)
 
 - stage: DevDeploy
   variables:
