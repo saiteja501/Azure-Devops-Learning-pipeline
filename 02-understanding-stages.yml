@@ -12,6 +12,7 @@ stages:
     - bash: echo Build FirstJob
     - bash: echo $(PipelineLevelVariable)
     - bash: echo $(Build.BuildUri)
+    - bash: echo $(Build.BuildId)
 #   - job: SecondJob
 #     steps:
 #     - bash: echo Build SecondJob  
