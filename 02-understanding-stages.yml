@@ -10,36 +10,38 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-  - job: SecondJob
-    steps:
-    - bash: echo Build SecondJob  
     - bash: echo $(PipelineLevelVariable)
+    - bash: echo $(Build.BuildUri)
+#   - job: SecondJob
+#     steps:
+#     - bash: echo Build SecondJob  
+#     - bash: echo $(PipelineLevelVariable)
 
-- stage: DevDeploy
-  variables:
-   environment: Dev
-  dependsOn: Build
-  jobs:
-  - job: DevDeployJob
-    steps:
-    - bash: echo $(environment)DevDeploy
+# - stage: DevDeploy
+#   variables:
+#    environment: Dev
+#   dependsOn: Build
+#   jobs:
+#   - job: DevDeployJob
+#     steps:
+#     - bash: echo $(environment)DevDeploy
 
-- stage: QADeploy
-  variables:
-   environment: QA
-  dependsOn: Build
-  jobs:
-  - job: QADeployJob
-    steps:
-    - bash: echo $(environment)QADeploy
+# - stage: QADeploy
+#   variables:
+#    environment: QA
+#   dependsOn: Build
+#   jobs:
+#   - job: QADeployJob
+#     steps:
+#     - bash: echo $(environment)QADeploy
 
-- stage: ProdDeploy
-  variables:
-   environment: Prod
-  dependsOn:
-  - DevDeploy
-  - QADeploy
-  jobs:
-  - job: ProdDeployJob
-    steps:
-    - bash: echo $(environment)ProdDeploy
+# - stage: ProdDeploy
+#   variables:
+#    environment: Prod
+#   dependsOn:
+#   - DevDeploy
+#   - QADeploy
+#   jobs:
+#   - job: ProdDeployJob
+#     steps:
+#     - bash: echo $(environment)ProdDeploy
